@@ -1,0 +1,486 @@
+E:\LenovoSoftstore\Install\anaconda3\envs\YAMNET\python.exe D:/PycharmProgram/chuanyin/ESC-50/train_CRNN.py
+train_num 1600
+test_num 400
+训练集x大小 (8000, 128, 1251)
+训练集y大小 (8000,)
+测试集x大小 (400, 128, 1251)
+测试集y大小 (400,)
+
+
+训练集x大小 (8000, 128, 1251, 1)
+训练集y大小 (8000, 50)
+测试集x大小 (400, 128, 1251, 1)
+测试集y大小 (400, 50)
+model输入shape: (128, 1251, 1) model输出shape: 50
+2023-08-25 10:18:41.118763: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-08-25 10:18:41.811947: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1525] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5455 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4060 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv1 (Conv2D)              (None, 126, 1249, 30)     300
+
+ batch_normalization (BatchN  (None, 126, 1249, 30)    120
+ ormalization)
+
+ pool1 (MaxPooling2D)        (None, 42, 624, 30)       0
+
+ dropout1 (Dropout)          (None, 42, 624, 30)       0
+
+ conv2 (Conv2D)              (None, 40, 622, 60)       16260
+
+ batch_normalization_1 (Batc  (None, 40, 622, 60)      240
+ hNormalization)
+
+ pool2 (MaxPooling2D)        (None, 20, 311, 60)       0
+
+ dropout2 (Dropout)          (None, 20, 311, 60)       0
+
+ conv3 (Conv2D)              (None, 18, 309, 60)       32460
+
+ batch_normalization_2 (Batc  (None, 18, 309, 60)      240
+ hNormalization)
+
+ pool3 (MaxPooling2D)        (None, 6, 154, 60)        0
+
+ dropout3 (Dropout)          (None, 6, 154, 60)        0
+
+ conv4 (Conv2D)              (None, 4, 152, 60)        32460
+
+ batch_normalization_3 (Batc  (None, 4, 152, 60)       240
+ hNormalization)
+
+ pool4 (MaxPooling2D)        (None, 1, 50, 60)         0
+
+ dropout4 (Dropout)          (None, 1, 50, 60)         0
+
+ permute (Permute)           (None, 60, 1, 50)         0
+
+ reshape (Reshape)           (None, 50, 60)            0
+
+ LSTM1 (LSTM)                (None, 50, 60)            29040
+
+ LSTM2 (LSTM)                (None, 60)                29040
+
+ dropout5 (Dropout)          (None, 60)                0
+
+ Linear (Dense)              (None, 50)                3050
+
+ activation (Activation)     (None, 50)                0
+
+=================================================================
+Total params: 143,450
+Trainable params: 143,030
+Non-trainable params: 420
+_________________________________________________________________
+Epoch 1/1000
+2023-08-25 10:18:45.141104: I tensorflow/stream_executor/cuda/cuda_dnn.cc:368] Loaded cuDNN version 8900
+2023-08-25 10:18:47.044036: I tensorflow/stream_executor/cuda/cuda_blas.cc:1786] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+500/500 [==============================] - ETA: 0s - loss: 3.5871 - accuracy: 0.0768
+Epoch 1: saving model to CRNN_models\esc50_.01_3.1646_0.1775.hdf5
+
+Epoch 1: val_loss improved from inf to 3.16459, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 39s 66ms/step - loss: 3.5871 - accuracy: 0.0768 - val_loss: 3.1646 - val_accuracy: 0.1775 - lr: 0.0010
+Epoch 2/1000
+500/500 [==============================] - ETA: 0s - loss: 3.0809 - accuracy: 0.1834
+Epoch 2: saving model to CRNN_models\esc50_.02_2.5710_0.2300.hdf5
+
+Epoch 2: val_loss improved from 3.16459 to 2.57103, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 3.0809 - accuracy: 0.1834 - val_loss: 2.5710 - val_accuracy: 0.2300 - lr: 0.0010
+Epoch 3/1000
+500/500 [==============================] - ETA: 0s - loss: 2.7656 - accuracy: 0.2631
+Epoch 3: saving model to CRNN_models\esc50_.03_2.3773_0.2850.hdf5
+
+Epoch 3: val_loss improved from 2.57103 to 2.37730, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 2.7656 - accuracy: 0.2631 - val_loss: 2.3773 - val_accuracy: 0.2850 - lr: 0.0010
+Epoch 4/1000
+500/500 [==============================] - ETA: 0s - loss: 2.5626 - accuracy: 0.3276
+Epoch 4: saving model to CRNN_models\esc50_.04_2.0656_0.3975.hdf5
+
+Epoch 4: val_loss improved from 2.37730 to 2.06559, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 2.5626 - accuracy: 0.3276 - val_loss: 2.0656 - val_accuracy: 0.3975 - lr: 0.0010
+Epoch 5/1000
+500/500 [==============================] - ETA: 0s - loss: 2.3983 - accuracy: 0.3755
+Epoch 5: saving model to CRNN_models\esc50_.05_1.9589_0.4550.hdf5
+
+Epoch 5: val_loss improved from 2.06559 to 1.95894, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 2.3983 - accuracy: 0.3755 - val_loss: 1.9589 - val_accuracy: 0.4550 - lr: 0.0010
+Epoch 6/1000
+500/500 [==============================] - ETA: 0s - loss: 2.3078 - accuracy: 0.4055
+Epoch 6: saving model to CRNN_models\esc50_.06_2.0109_0.3800.hdf5
+
+Epoch 6: val_loss did not improve from 1.95894
+500/500 [==============================] - 32s 64ms/step - loss: 2.3078 - accuracy: 0.4055 - val_loss: 2.0109 - val_accuracy: 0.3800 - lr: 0.0010
+Epoch 7/1000
+500/500 [==============================] - ETA: 0s - loss: 2.2138 - accuracy: 0.4400
+Epoch 7: saving model to CRNN_models\esc50_.07_1.8469_0.4550.hdf5
+
+Epoch 7: val_loss improved from 1.95894 to 1.84686, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 2.2138 - accuracy: 0.4400 - val_loss: 1.8469 - val_accuracy: 0.4550 - lr: 0.0010
+Epoch 8/1000
+500/500 [==============================] - ETA: 0s - loss: 2.1145 - accuracy: 0.4787
+Epoch 8: saving model to CRNN_models\esc50_.08_1.7489_0.4725.hdf5
+
+Epoch 8: val_loss improved from 1.84686 to 1.74886, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 2.1145 - accuracy: 0.4787 - val_loss: 1.7489 - val_accuracy: 0.4725 - lr: 0.0010
+Epoch 9/1000
+500/500 [==============================] - ETA: 0s - loss: 2.0206 - accuracy: 0.4970
+Epoch 9: saving model to CRNN_models\esc50_.09_1.6796_0.5075.hdf5
+
+Epoch 9: val_loss improved from 1.74886 to 1.67959, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 2.0206 - accuracy: 0.4970 - val_loss: 1.6796 - val_accuracy: 0.5075 - lr: 0.0010
+Epoch 10/1000
+500/500 [==============================] - ETA: 0s - loss: 1.9560 - accuracy: 0.5251
+Epoch 10: saving model to CRNN_models\esc50_.10_1.5370_0.5575.hdf5
+
+Epoch 10: val_loss improved from 1.67959 to 1.53700, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.9560 - accuracy: 0.5251 - val_loss: 1.5370 - val_accuracy: 0.5575 - lr: 0.0010
+Epoch 11/1000
+500/500 [==============================] - ETA: 0s - loss: 1.8745 - accuracy: 0.5486
+Epoch 11: saving model to CRNN_models\esc50_.11_1.5223_0.5425.hdf5
+
+Epoch 11: val_loss improved from 1.53700 to 1.52232, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.8745 - accuracy: 0.5486 - val_loss: 1.5223 - val_accuracy: 0.5425 - lr: 0.0010
+Epoch 12/1000
+500/500 [==============================] - ETA: 0s - loss: 1.8135 - accuracy: 0.5745
+Epoch 12: saving model to CRNN_models\esc50_.12_1.5368_0.5400.hdf5
+
+Epoch 12: val_loss did not improve from 1.52232
+500/500 [==============================] - 32s 64ms/step - loss: 1.8135 - accuracy: 0.5745 - val_loss: 1.5368 - val_accuracy: 0.5400 - lr: 0.0010
+Epoch 13/1000
+500/500 [==============================] - ETA: 0s - loss: 1.7566 - accuracy: 0.6001
+Epoch 13: saving model to CRNN_models\esc50_.13_1.4391_0.5800.hdf5
+
+Epoch 13: val_loss improved from 1.52232 to 1.43908, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.7566 - accuracy: 0.6001 - val_loss: 1.4391 - val_accuracy: 0.5800 - lr: 0.0010
+Epoch 14/1000
+500/500 [==============================] - ETA: 0s - loss: 1.7514 - accuracy: 0.6051
+Epoch 14: saving model to CRNN_models\esc50_.14_1.5356_0.5725.hdf5
+
+Epoch 14: val_loss did not improve from 1.43908
+500/500 [==============================] - 32s 64ms/step - loss: 1.7514 - accuracy: 0.6051 - val_loss: 1.5356 - val_accuracy: 0.5725 - lr: 0.0010
+Epoch 15/1000
+500/500 [==============================] - ETA: 0s - loss: 1.6971 - accuracy: 0.6210
+Epoch 15: saving model to CRNN_models\esc50_.15_1.4910_0.5700.hdf5
+
+Epoch 15: val_loss did not improve from 1.43908
+500/500 [==============================] - 32s 64ms/step - loss: 1.6971 - accuracy: 0.6210 - val_loss: 1.4910 - val_accuracy: 0.5700 - lr: 0.0010
+Epoch 16/1000
+500/500 [==============================] - ETA: 0s - loss: 1.6578 - accuracy: 0.6329
+Epoch 16: saving model to CRNN_models\esc50_.16_1.4412_0.5650.hdf5
+
+Epoch 16: val_loss did not improve from 1.43908
+
+Epoch 16: ReduceLROnPlateau reducing learning rate to 0.0006000000284984708.
+500/500 [==============================] - 32s 64ms/step - loss: 1.6578 - accuracy: 0.6329 - val_loss: 1.4412 - val_accuracy: 0.5650 - lr: 0.0010
+Epoch 17/1000
+500/500 [==============================] - ETA: 0s - loss: 1.5963 - accuracy: 0.6662
+Epoch 17: saving model to CRNN_models\esc50_.17_1.3278_0.6100.hdf5
+
+Epoch 17: val_loss improved from 1.43908 to 1.32783, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.5963 - accuracy: 0.6662 - val_loss: 1.3278 - val_accuracy: 0.6100 - lr: 6.0000e-04
+Epoch 18/1000
+500/500 [==============================] - ETA: 0s - loss: 1.5258 - accuracy: 0.6852
+Epoch 18: saving model to CRNN_models\esc50_.18_1.4221_0.5875.hdf5
+
+Epoch 18: val_loss did not improve from 1.32783
+500/500 [==============================] - 32s 64ms/step - loss: 1.5258 - accuracy: 0.6852 - val_loss: 1.4221 - val_accuracy: 0.5875 - lr: 6.0000e-04
+Epoch 19/1000
+500/500 [==============================] - ETA: 0s - loss: 1.5098 - accuracy: 0.6900
+Epoch 19: saving model to CRNN_models\esc50_.19_1.3828_0.5800.hdf5
+
+Epoch 19: val_loss did not improve from 1.32783
+500/500 [==============================] - 32s 64ms/step - loss: 1.5098 - accuracy: 0.6900 - val_loss: 1.3828 - val_accuracy: 0.5800 - lr: 6.0000e-04
+Epoch 20/1000
+500/500 [==============================] - ETA: 0s - loss: 1.4896 - accuracy: 0.6975
+Epoch 20: saving model to CRNN_models\esc50_.20_1.2828_0.6300.hdf5
+
+Epoch 20: val_loss improved from 1.32783 to 1.28280, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.4896 - accuracy: 0.6975 - val_loss: 1.2828 - val_accuracy: 0.6300 - lr: 6.0000e-04
+Epoch 21/1000
+500/500 [==============================] - ETA: 0s - loss: 1.4554 - accuracy: 0.7040
+Epoch 21: saving model to CRNN_models\esc50_.21_1.2848_0.6075.hdf5
+
+Epoch 21: val_loss did not improve from 1.28280
+500/500 [==============================] - 32s 64ms/step - loss: 1.4554 - accuracy: 0.7040 - val_loss: 1.2848 - val_accuracy: 0.6075 - lr: 6.0000e-04
+Epoch 22/1000
+500/500 [==============================] - ETA: 0s - loss: 1.4610 - accuracy: 0.7092
+Epoch 22: saving model to CRNN_models\esc50_.22_1.3197_0.6125.hdf5
+
+Epoch 22: val_loss did not improve from 1.28280
+500/500 [==============================] - 32s 64ms/step - loss: 1.4610 - accuracy: 0.7092 - val_loss: 1.3197 - val_accuracy: 0.6125 - lr: 6.0000e-04
+Epoch 23/1000
+500/500 [==============================] - ETA: 0s - loss: 1.4380 - accuracy: 0.7128
+Epoch 23: saving model to CRNN_models\esc50_.23_1.2667_0.6075.hdf5
+
+Epoch 23: val_loss improved from 1.28280 to 1.26671, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.4380 - accuracy: 0.7128 - val_loss: 1.2667 - val_accuracy: 0.6075 - lr: 6.0000e-04
+Epoch 24/1000
+500/500 [==============================] - ETA: 0s - loss: 1.4058 - accuracy: 0.7191
+Epoch 24: saving model to CRNN_models\esc50_.24_1.2920_0.6175.hdf5
+
+Epoch 24: val_loss did not improve from 1.26671
+500/500 [==============================] - 32s 64ms/step - loss: 1.4058 - accuracy: 0.7191 - val_loss: 1.2920 - val_accuracy: 0.6175 - lr: 6.0000e-04
+Epoch 25/1000
+500/500 [==============================] - ETA: 0s - loss: 1.3956 - accuracy: 0.7237
+Epoch 25: saving model to CRNN_models\esc50_.25_1.2818_0.6250.hdf5
+
+Epoch 25: val_loss did not improve from 1.26671
+500/500 [==============================] - 32s 64ms/step - loss: 1.3956 - accuracy: 0.7237 - val_loss: 1.2818 - val_accuracy: 0.6250 - lr: 6.0000e-04
+Epoch 26/1000
+500/500 [==============================] - ETA: 0s - loss: 1.4101 - accuracy: 0.7289
+Epoch 26: saving model to CRNN_models\esc50_.26_1.2142_0.6475.hdf5
+
+Epoch 26: val_loss improved from 1.26671 to 1.21417, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.4101 - accuracy: 0.7289 - val_loss: 1.2142 - val_accuracy: 0.6475 - lr: 6.0000e-04
+Epoch 27/1000
+500/500 [==============================] - ETA: 0s - loss: 1.3549 - accuracy: 0.7395
+Epoch 27: saving model to CRNN_models\esc50_.27_1.2678_0.6225.hdf5
+
+Epoch 27: val_loss did not improve from 1.21417
+500/500 [==============================] - 32s 64ms/step - loss: 1.3549 - accuracy: 0.7395 - val_loss: 1.2678 - val_accuracy: 0.6225 - lr: 6.0000e-04
+Epoch 28/1000
+500/500 [==============================] - ETA: 0s - loss: 1.3708 - accuracy: 0.7425
+Epoch 28: saving model to CRNN_models\esc50_.28_1.2442_0.6225.hdf5
+
+Epoch 28: val_loss did not improve from 1.21417
+500/500 [==============================] - 32s 64ms/step - loss: 1.3708 - accuracy: 0.7425 - val_loss: 1.2442 - val_accuracy: 0.6225 - lr: 6.0000e-04
+Epoch 29/1000
+500/500 [==============================] - ETA: 0s - loss: 1.3586 - accuracy: 0.7489
+Epoch 29: saving model to CRNN_models\esc50_.29_1.1700_0.6450.hdf5
+
+Epoch 29: val_loss improved from 1.21417 to 1.17003, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.3586 - accuracy: 0.7489 - val_loss: 1.1700 - val_accuracy: 0.6450 - lr: 6.0000e-04
+Epoch 30/1000
+500/500 [==============================] - ETA: 0s - loss: 1.3057 - accuracy: 0.7581
+Epoch 30: saving model to CRNN_models\esc50_.30_1.3373_0.5950.hdf5
+
+Epoch 30: val_loss did not improve from 1.17003
+500/500 [==============================] - 32s 64ms/step - loss: 1.3057 - accuracy: 0.7581 - val_loss: 1.3373 - val_accuracy: 0.5950 - lr: 6.0000e-04
+Epoch 31/1000
+500/500 [==============================] - ETA: 0s - loss: 1.3199 - accuracy: 0.7646
+Epoch 31: saving model to CRNN_models\esc50_.31_1.2024_0.6325.hdf5
+
+Epoch 31: val_loss did not improve from 1.17003
+500/500 [==============================] - 32s 64ms/step - loss: 1.3199 - accuracy: 0.7646 - val_loss: 1.2024 - val_accuracy: 0.6325 - lr: 6.0000e-04
+Epoch 32/1000
+500/500 [==============================] - ETA: 0s - loss: 1.3266 - accuracy: 0.7565
+Epoch 32: saving model to CRNN_models\esc50_.32_1.1584_0.6475.hdf5
+
+Epoch 32: val_loss improved from 1.17003 to 1.15842, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.3266 - accuracy: 0.7565 - val_loss: 1.1584 - val_accuracy: 0.6475 - lr: 6.0000e-04
+Epoch 33/1000
+500/500 [==============================] - ETA: 0s - loss: 1.2955 - accuracy: 0.7575
+Epoch 33: saving model to CRNN_models\esc50_.33_1.1566_0.6475.hdf5
+
+Epoch 33: val_loss improved from 1.15842 to 1.15661, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.2955 - accuracy: 0.7575 - val_loss: 1.1566 - val_accuracy: 0.6475 - lr: 6.0000e-04
+Epoch 34/1000
+500/500 [==============================] - ETA: 0s - loss: 1.2742 - accuracy: 0.7717
+Epoch 34: saving model to CRNN_models\esc50_.34_1.2442_0.6350.hdf5
+
+Epoch 34: val_loss did not improve from 1.15661
+500/500 [==============================] - 32s 65ms/step - loss: 1.2742 - accuracy: 0.7717 - val_loss: 1.2442 - val_accuracy: 0.6350 - lr: 6.0000e-04
+Epoch 35/1000
+500/500 [==============================] - ETA: 0s - loss: 1.2310 - accuracy: 0.7861
+Epoch 35: saving model to CRNN_models\esc50_.35_1.1851_0.6525.hdf5
+
+Epoch 35: val_loss did not improve from 1.15661
+500/500 [==============================] - 32s 64ms/step - loss: 1.2310 - accuracy: 0.7861 - val_loss: 1.1851 - val_accuracy: 0.6525 - lr: 6.0000e-04
+Epoch 36/1000
+500/500 [==============================] - ETA: 0s - loss: 1.2793 - accuracy: 0.7721
+Epoch 36: saving model to CRNN_models\esc50_.36_1.1031_0.6700.hdf5
+
+Epoch 36: val_loss improved from 1.15661 to 1.10313, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.2793 - accuracy: 0.7721 - val_loss: 1.1031 - val_accuracy: 0.6700 - lr: 6.0000e-04
+Epoch 37/1000
+500/500 [==============================] - ETA: 0s - loss: 1.2567 - accuracy: 0.7811
+Epoch 37: saving model to CRNN_models\esc50_.37_1.1457_0.6450.hdf5
+
+Epoch 37: val_loss did not improve from 1.10313
+500/500 [==============================] - 32s 64ms/step - loss: 1.2567 - accuracy: 0.7811 - val_loss: 1.1457 - val_accuracy: 0.6450 - lr: 6.0000e-04
+Epoch 38/1000
+500/500 [==============================] - ETA: 0s - loss: 1.2609 - accuracy: 0.7745
+Epoch 38: saving model to CRNN_models\esc50_.38_1.2612_0.6350.hdf5
+
+Epoch 38: val_loss did not improve from 1.10313
+500/500 [==============================] - 32s 64ms/step - loss: 1.2609 - accuracy: 0.7745 - val_loss: 1.2612 - val_accuracy: 0.6350 - lr: 6.0000e-04
+Epoch 39/1000
+500/500 [==============================] - ETA: 0s - loss: 1.2292 - accuracy: 0.7854
+Epoch 39: saving model to CRNN_models\esc50_.39_1.1113_0.6575.hdf5
+
+Epoch 39: val_loss did not improve from 1.10313
+
+Epoch 39: ReduceLROnPlateau reducing learning rate to 0.0003600000170990825.
+500/500 [==============================] - 32s 64ms/step - loss: 1.2292 - accuracy: 0.7854 - val_loss: 1.1113 - val_accuracy: 0.6575 - lr: 6.0000e-04
+Epoch 40/1000
+500/500 [==============================] - ETA: 0s - loss: 1.2172 - accuracy: 0.7940
+Epoch 40: saving model to CRNN_models\esc50_.40_1.1421_0.6700.hdf5
+
+Epoch 40: val_loss did not improve from 1.10313
+500/500 [==============================] - 32s 64ms/step - loss: 1.2172 - accuracy: 0.7940 - val_loss: 1.1421 - val_accuracy: 0.6700 - lr: 3.6000e-04
+Epoch 41/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1584 - accuracy: 0.8150
+Epoch 41: saving model to CRNN_models\esc50_.41_1.1138_0.6875.hdf5
+
+Epoch 41: val_loss did not improve from 1.10313
+500/500 [==============================] - 32s 64ms/step - loss: 1.1584 - accuracy: 0.8150 - val_loss: 1.1138 - val_accuracy: 0.6875 - lr: 3.6000e-04
+Epoch 42/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1936 - accuracy: 0.8060
+Epoch 42: saving model to CRNN_models\esc50_.42_1.1583_0.6425.hdf5
+
+Epoch 42: val_loss did not improve from 1.10313
+
+Epoch 42: ReduceLROnPlateau reducing learning rate to 0.00021600000327453016.
+500/500 [==============================] - 32s 64ms/step - loss: 1.1936 - accuracy: 0.8060 - val_loss: 1.1583 - val_accuracy: 0.6425 - lr: 3.6000e-04
+Epoch 43/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1765 - accuracy: 0.8094
+Epoch 43: saving model to CRNN_models\esc50_.43_1.0932_0.6775.hdf5
+
+Epoch 43: val_loss improved from 1.10313 to 1.09317, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.1765 - accuracy: 0.8094 - val_loss: 1.0932 - val_accuracy: 0.6775 - lr: 2.1600e-04
+Epoch 44/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1824 - accuracy: 0.8111
+Epoch 44: saving model to CRNN_models\esc50_.44_1.0495_0.6925.hdf5
+
+Epoch 44: val_loss improved from 1.09317 to 1.04950, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.1824 - accuracy: 0.8111 - val_loss: 1.0495 - val_accuracy: 0.6925 - lr: 2.1600e-04
+Epoch 45/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1578 - accuracy: 0.8177
+Epoch 45: saving model to CRNN_models\esc50_.45_1.0374_0.7000.hdf5
+
+Epoch 45: val_loss improved from 1.04950 to 1.03738, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.1578 - accuracy: 0.8177 - val_loss: 1.0374 - val_accuracy: 0.7000 - lr: 2.1600e-04
+Epoch 46/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1365 - accuracy: 0.8232
+Epoch 46: saving model to CRNN_models\esc50_.46_1.0374_0.6875.hdf5
+
+Epoch 46: val_loss did not improve from 1.03738
+500/500 [==============================] - 32s 64ms/step - loss: 1.1365 - accuracy: 0.8232 - val_loss: 1.0374 - val_accuracy: 0.6875 - lr: 2.1600e-04
+Epoch 47/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1219 - accuracy: 0.8274
+Epoch 47: saving model to CRNN_models\esc50_.47_1.0894_0.6600.hdf5
+
+Epoch 47: val_loss did not improve from 1.03738
+500/500 [==============================] - 32s 64ms/step - loss: 1.1219 - accuracy: 0.8274 - val_loss: 1.0894 - val_accuracy: 0.6600 - lr: 2.1600e-04
+Epoch 48/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1113 - accuracy: 0.8246
+Epoch 48: saving model to CRNN_models\esc50_.48_1.1265_0.6575.hdf5
+
+Epoch 48: val_loss did not improve from 1.03738
+
+Epoch 48: ReduceLROnPlateau reducing learning rate to 0.00012960000021848827.
+500/500 [==============================] - 32s 64ms/step - loss: 1.1113 - accuracy: 0.8246 - val_loss: 1.1265 - val_accuracy: 0.6575 - lr: 2.1600e-04
+Epoch 49/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1110 - accuracy: 0.8317
+Epoch 49: saving model to CRNN_models\esc50_.49_1.0457_0.6800.hdf5
+
+Epoch 49: val_loss did not improve from 1.03738
+500/500 [==============================] - 32s 64ms/step - loss: 1.1110 - accuracy: 0.8317 - val_loss: 1.0457 - val_accuracy: 0.6800 - lr: 1.2960e-04
+Epoch 50/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1291 - accuracy: 0.8281
+Epoch 50: saving model to CRNN_models\esc50_.50_1.0702_0.6700.hdf5
+
+Epoch 50: val_loss did not improve from 1.03738
+500/500 [==============================] - 32s 64ms/step - loss: 1.1291 - accuracy: 0.8281 - val_loss: 1.0702 - val_accuracy: 0.6700 - lr: 1.2960e-04
+Epoch 51/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1249 - accuracy: 0.8248
+Epoch 51: saving model to CRNN_models\esc50_.51_1.0523_0.6525.hdf5
+
+Epoch 51: val_loss did not improve from 1.03738
+
+Epoch 51: ReduceLROnPlateau reducing learning rate to 7.775999838486313e-05.
+500/500 [==============================] - 32s 64ms/step - loss: 1.1249 - accuracy: 0.8248 - val_loss: 1.0523 - val_accuracy: 0.6525 - lr: 1.2960e-04
+Epoch 52/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0869 - accuracy: 0.8407
+Epoch 52: saving model to CRNN_models\esc50_.52_1.0576_0.6575.hdf5
+
+Epoch 52: val_loss did not improve from 1.03738
+500/500 [==============================] - 32s 64ms/step - loss: 1.0869 - accuracy: 0.8407 - val_loss: 1.0576 - val_accuracy: 0.6575 - lr: 7.7760e-05
+Epoch 53/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1096 - accuracy: 0.8295
+Epoch 53: saving model to CRNN_models\esc50_.53_1.0327_0.6725.hdf5
+
+Epoch 53: val_loss improved from 1.03738 to 1.03273, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.1096 - accuracy: 0.8295 - val_loss: 1.0327 - val_accuracy: 0.6725 - lr: 7.7760e-05
+Epoch 54/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0915 - accuracy: 0.8344
+Epoch 54: saving model to CRNN_models\esc50_.54_1.0155_0.6800.hdf5
+
+Epoch 54: val_loss improved from 1.03273 to 1.01547, saving model to CRNN_models\best.hdf5
+500/500 [==============================] - 32s 64ms/step - loss: 1.0915 - accuracy: 0.8344 - val_loss: 1.0155 - val_accuracy: 0.6800 - lr: 7.7760e-05
+Epoch 55/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0957 - accuracy: 0.8379
+Epoch 55: saving model to CRNN_models\esc50_.55_1.0632_0.6575.hdf5
+
+Epoch 55: val_loss did not improve from 1.01547
+500/500 [==============================] - 32s 64ms/step - loss: 1.0957 - accuracy: 0.8379 - val_loss: 1.0632 - val_accuracy: 0.6575 - lr: 7.7760e-05
+Epoch 56/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0736 - accuracy: 0.8385
+Epoch 56: saving model to CRNN_models\esc50_.56_1.0450_0.6675.hdf5
+
+Epoch 56: val_loss did not improve from 1.01547
+500/500 [==============================] - 32s 64ms/step - loss: 1.0736 - accuracy: 0.8385 - val_loss: 1.0450 - val_accuracy: 0.6675 - lr: 7.7760e-05
+Epoch 57/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1079 - accuracy: 0.8339
+Epoch 57: saving model to CRNN_models\esc50_.57_1.0226_0.6850.hdf5
+
+Epoch 57: val_loss did not improve from 1.01547
+
+Epoch 57: ReduceLROnPlateau reducing learning rate to 4.6655999904032795e-05.
+500/500 [==============================] - 32s 64ms/step - loss: 1.1079 - accuracy: 0.8339 - val_loss: 1.0226 - val_accuracy: 0.6850 - lr: 7.7760e-05
+Epoch 58/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0734 - accuracy: 0.8393
+Epoch 58: saving model to CRNN_models\esc50_.58_1.0367_0.6675.hdf5
+
+Epoch 58: val_loss did not improve from 1.01547
+500/500 [==============================] - 32s 64ms/step - loss: 1.0734 - accuracy: 0.8393 - val_loss: 1.0367 - val_accuracy: 0.6675 - lr: 4.6656e-05
+Epoch 59/1000
+500/500 [==============================] - ETA: 0s - loss: 1.1073 - accuracy: 0.8339
+Epoch 59: saving model to CRNN_models\esc50_.59_1.0364_0.6700.hdf5
+
+Epoch 59: val_loss did not improve from 1.01547
+500/500 [==============================] - 32s 64ms/step - loss: 1.1073 - accuracy: 0.8339 - val_loss: 1.0364 - val_accuracy: 0.6700 - lr: 4.6656e-05
+Epoch 60/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0809 - accuracy: 0.8363
+Epoch 60: saving model to CRNN_models\esc50_.60_1.0327_0.6800.hdf5
+
+Epoch 60: val_loss did not improve from 1.01547
+
+Epoch 60: ReduceLROnPlateau reducing learning rate to 2.799360081553459e-05.
+500/500 [==============================] - 32s 64ms/step - loss: 1.0809 - accuracy: 0.8363 - val_loss: 1.0327 - val_accuracy: 0.6800 - lr: 4.6656e-05
+Epoch 61/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0732 - accuracy: 0.8399
+Epoch 61: saving model to CRNN_models\esc50_.61_1.0430_0.6600.hdf5
+
+Epoch 61: val_loss did not improve from 1.01547
+500/500 [==============================] - 32s 64ms/step - loss: 1.0732 - accuracy: 0.8399 - val_loss: 1.0430 - val_accuracy: 0.6600 - lr: 2.7994e-05
+Epoch 62/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0864 - accuracy: 0.8432
+Epoch 62: saving model to CRNN_models\esc50_.62_1.0292_0.6725.hdf5
+
+Epoch 62: val_loss did not improve from 1.01547
+500/500 [==============================] - 32s 64ms/step - loss: 1.0864 - accuracy: 0.8432 - val_loss: 1.0292 - val_accuracy: 0.6725 - lr: 2.7994e-05
+Epoch 63/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0867 - accuracy: 0.8444
+Epoch 63: saving model to CRNN_models\esc50_.63_1.0405_0.6625.hdf5
+
+Epoch 63: val_loss did not improve from 1.01547
+
+Epoch 63: ReduceLROnPlateau reducing learning rate to 1.6796160707599483e-05.
+500/500 [==============================] - 32s 64ms/step - loss: 1.0867 - accuracy: 0.8444 - val_loss: 1.0405 - val_accuracy: 0.6625 - lr: 2.7994e-05
+Epoch 64/1000
+500/500 [==============================] - ETA: 0s - loss: 1.0769 - accuracy: 0.8357Restoring model weights from the end of the best epoch: 54.
+
+Epoch 64: saving model to CRNN_models\esc50_.64_1.0534_0.6575.hdf5
+
+Epoch 64: val_loss did not improve from 1.01547
+500/500 [==============================] - 32s 64ms/step - loss: 1.0769 - accuracy: 0.8357 - val_loss: 1.0534 - val_accuracy: 0.6575 - lr: 1.6796e-05
+Epoch 64: early stopping
+13/13 [==============================] - 0s 34ms/step - loss: 1.0155 - accuracy: 0.6800
+Test score: 1.0154743194580078
+Test accuracy: 0.6800000071525574
+dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy', 'lr'])
+
+进程已结束,退出代码0
