@@ -1,0 +1,288 @@
+E:\LenovoSoftstore\Install\anaconda3\envs\YAMNET\python.exe D:/PycharmProgram/chuanyin/ESC-50/trans_CRNN.py
+2023-08-26 13:46:03.079934: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-08-26 13:46:03.399334: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1525] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5451 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4060 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv1 (Conv2D)              (None, 126, 1249, 30)     300
+
+ batch_normalization (BatchN  (None, 126, 1249, 30)    120
+ ormalization)
+
+ pool1 (MaxPooling2D)        (None, 42, 624, 30)       0
+
+ dropout1 (Dropout)          (None, 42, 624, 30)       0
+
+ conv2 (Conv2D)              (None, 40, 622, 60)       16260
+
+ batch_normalization_1 (Batc  (None, 40, 622, 60)      240
+ hNormalization)
+
+ pool2 (MaxPooling2D)        (None, 20, 311, 60)       0
+
+ dropout2 (Dropout)          (None, 20, 311, 60)       0
+
+ conv3 (Conv2D)              (None, 18, 309, 60)       32460
+
+ batch_normalization_2 (Batc  (None, 18, 309, 60)      240
+ hNormalization)
+
+ pool3 (MaxPooling2D)        (None, 6, 154, 60)        0
+
+ dropout3 (Dropout)          (None, 6, 154, 60)        0
+
+ conv4 (Conv2D)              (None, 4, 152, 60)        32460
+
+ batch_normalization_3 (Batc  (None, 4, 152, 60)       240
+ hNormalization)
+
+ pool4 (MaxPooling2D)        (None, 1, 50, 60)         0
+
+ dropout4 (Dropout)          (None, 1, 50, 60)         0
+
+ permute (Permute)           (None, 60, 1, 50)         0
+
+ reshape (Reshape)           (None, 50, 60)            0
+
+ LSTM1 (LSTM)                (None, 50, 60)            29040
+
+ LSTM2 (LSTM)                (None, 60)                29040
+
+ dropout5 (Dropout)          (None, 60)                0
+
+ Linear (Dense)              (None, 50)                3050
+
+ activation (Activation)     (None, 50)                0
+
+=================================================================
+Total params: 143,450
+Trainable params: 143,030
+Non-trainable params: 420
+_________________________________________________________________
+(1600, 128, 1251, 1) (1600, 50)
+2023-08-26 13:46:06.523321: W tensorflow/python/util/util.cc:368] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_fn, lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2023-08-26 13:46:12.352222: W tensorflow/compiler/mlir/lite/python/tf_tfl_flatbuffer_helpers.cc:363] Ignored output_format.
+2023-08-26 13:46:12.352338: W tensorflow/compiler/mlir/lite/python/tf_tfl_flatbuffer_helpers.cc:366] Ignored drop_control_dependency.
+2023-08-26 13:46:12.352864: I tensorflow/cc/saved_model/reader.cc:43] Reading SavedModel from: C:\Users\34405\AppData\Local\Temp\tmpv2ib8w0b
+2023-08-26 13:46:12.365046: I tensorflow/cc/saved_model/reader.cc:107] Reading meta graph with tags { serve }
+2023-08-26 13:46:12.365110: I tensorflow/cc/saved_model/reader.cc:148] Reading SavedModel debug info (if present) from: C:\Users\34405\AppData\Local\Temp\tmpv2ib8w0b
+2023-08-26 13:46:12.448195: I tensorflow/cc/saved_model/loader.cc:210] Restoring SavedModel bundle.
+2023-08-26 13:46:12.592892: I tensorflow/cc/saved_model/loader.cc:194] Running initialization op on SavedModel bundle at path: C:\Users\34405\AppData\Local\Temp\tmpv2ib8w0b
+2023-08-26 13:46:12.679749: I tensorflow/cc/saved_model/loader.cc:283] SavedModel load for tags { serve }; Status: success: OK. Took 326877 microseconds.
+2023-08-26 13:46:12.845849: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:237] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2023-08-26 13:46:12.976057: W tensorflow/compiler/mlir/lite/flatbuffer_export.cc:1891] TFLite interpreter needs to link Flex delegate in order to run the model since it contains the following Select TFop(s):
+Flex ops: FlexTensorListFromTensor, FlexTensorListGetItem, FlexTensorListReserve, FlexTensorListSetItem, FlexTensorListStack
+Details:
+	tf.TensorListFromTensor(tensor<50x?x60xf32>, tensor<2xi32>) -> (tensor<!tf_type.variant<tensor<?x60xf32>>>) : {device = ""}
+	tf.TensorListFromTensor(tensor<?x?x60xf32>, tensor<2xi32>) -> (tensor<!tf_type.variant<tensor<?x60xf32>>>) : {device = ""}
+	tf.TensorListGetItem(tensor<!tf_type.variant<tensor<?x60xf32>>>, tensor<i32>, tensor<2xi32>) -> (tensor<?x60xf32>) : {device = ""}
+	tf.TensorListReserve(tensor<2xi32>, tensor<i32>) -> (tensor<!tf_type.variant<tensor<?x60xf32>>>) : {device = ""}
+	tf.TensorListSetItem(tensor<!tf_type.variant<tensor<?x60xf32>>>, tensor<i32>, tensor<?x60xf32>) -> (tensor<!tf_type.variant<tensor<?x60xf32>>>) : {device = ""}
+	tf.TensorListStack(tensor<!tf_type.variant<tensor<?x60xf32>>>, tensor<2xi32>) -> (tensor<?x?x60xf32>) : {device = "", num_elements = -1 : i64}
+See instructions: https://www.tensorflow.org/lite/guide/ops_select
+(400, 128, 1251, 1) (400, 50)
+train_data.shape (1600, 128, 1251, 1)
+train_label.shape (1600, 50)
+end_step:  2000
+find prune layer: LSTM1
+find prune layer: LSTM2
+find prune layer: Linear
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv1 (Conv2D)              (None, 126, 1249, 30)     300
+
+ batch_normalization (BatchN  (None, 126, 1249, 30)    120
+ ormalization)
+
+ pool1 (MaxPooling2D)        (None, 42, 624, 30)       0
+
+ dropout1 (Dropout)          (None, 42, 624, 30)       0
+
+ conv2 (Conv2D)              (None, 40, 622, 60)       16260
+
+ batch_normalization_1 (Batc  (None, 40, 622, 60)      240
+ hNormalization)
+
+ pool2 (MaxPooling2D)        (None, 20, 311, 60)       0
+
+ dropout2 (Dropout)          (None, 20, 311, 60)       0
+
+ conv3 (Conv2D)              (None, 18, 309, 60)       32460
+
+ batch_normalization_2 (Batc  (None, 18, 309, 60)      240
+ hNormalization)
+
+ pool3 (MaxPooling2D)        (None, 6, 154, 60)        0
+
+ dropout3 (Dropout)          (None, 6, 154, 60)        0
+
+ conv4 (Conv2D)              (None, 4, 152, 60)        32460
+
+ batch_normalization_3 (Batc  (None, 4, 152, 60)       240
+ hNormalization)
+
+ pool4 (MaxPooling2D)        (None, 1, 50, 60)         0
+
+ dropout4 (Dropout)          (None, 1, 50, 60)         0
+
+ permute (Permute)           (None, 60, 1, 50)         0
+
+ reshape (Reshape)           (None, 50, 60)            0
+
+ prune_low_magnitude_LSTM1 (  (None, 50, 60)           57843
+ PruneLowMagnitude)
+
+ prune_low_magnitude_LSTM2 (  (None, 60)               57843
+ PruneLowMagnitude)
+
+ dropout5 (Dropout)          (None, 60)                0
+
+ prune_low_magnitude_Linear   (None, 50)               6052
+ (PruneLowMagnitude)
+
+ activation (Activation)     (None, 50)                0
+
+=================================================================
+Total params: 204,058
+Trainable params: 143,030
+Non-trainable params: 61,028
+_________________________________________________________________
+2023-08-26 13:46:15.305197: I tensorflow/stream_executor/cuda/cuda_dnn.cc:366] Loaded cuDNN version 8900
+2023-08-26 13:46:16.254698: I tensorflow/stream_executor/cuda/cuda_blas.cc:1774] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+Epoch 1/20
+  6/100 [>.............................] - ETA: 6s - loss: 0.2496 - accuracy: 0.9375WARNING:tensorflow:Callback method `on_train_batch_end` is slow compared to the batch time (batch time: 0.0346s vs `on_train_batch_end` time: 0.0400s). Check your callbacks.
+WARNING:tensorflow:Callback method `on_train_batch_end` is slow compared to the batch time (batch time: 0.0346s vs `on_train_batch_end` time: 0.0400s). Check your callbacks.
+100/100 [==============================] - 10s 73ms/step - loss: 0.3344 - accuracy: 0.9206 - val_loss: 1.5672 - val_accuracy: 0.5850
+Epoch 2/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.6993 - accuracy: 0.8469 - val_loss: 1.6819 - val_accuracy: 0.5350
+Epoch 3/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.6501 - accuracy: 0.8450 - val_loss: 1.5067 - val_accuracy: 0.5600
+Epoch 4/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.7023 - accuracy: 0.8250 - val_loss: 1.4984 - val_accuracy: 0.6025
+Epoch 5/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.7085 - accuracy: 0.8281 - val_loss: 1.6339 - val_accuracy: 0.5400
+Epoch 6/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.7213 - accuracy: 0.8381 - val_loss: 1.6281 - val_accuracy: 0.5550
+Epoch 7/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.7926 - accuracy: 0.8163 - val_loss: 1.5770 - val_accuracy: 0.5725
+Epoch 8/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.8258 - accuracy: 0.8006 - val_loss: 1.5713 - val_accuracy: 0.5850
+Epoch 9/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.8185 - accuracy: 0.8069 - val_loss: 1.5418 - val_accuracy: 0.6100
+Epoch 10/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.8815 - accuracy: 0.7819 - val_loss: 1.8312 - val_accuracy: 0.5250
+Epoch 11/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.8969 - accuracy: 0.7937 - val_loss: 1.5720 - val_accuracy: 0.6100
+Epoch 12/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.9202 - accuracy: 0.7756 - val_loss: 1.6195 - val_accuracy: 0.5500
+Epoch 13/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.8796 - accuracy: 0.7725 - val_loss: 1.6286 - val_accuracy: 0.5525
+Epoch 14/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.8420 - accuracy: 0.8056 - val_loss: 1.5810 - val_accuracy: 0.5125
+Epoch 15/20
+100/100 [==============================] - 7s 67ms/step - loss: 0.8272 - accuracy: 0.8087 - val_loss: 1.4853 - val_accuracy: 0.5875
+Epoch 16/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.8199 - accuracy: 0.7987 - val_loss: 1.6403 - val_accuracy: 0.5500
+Epoch 17/20
+100/100 [==============================] - 7s 67ms/step - loss: 0.8029 - accuracy: 0.8006 - val_loss: 1.4341 - val_accuracy: 0.6250
+Epoch 18/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.7491 - accuracy: 0.8175 - val_loss: 1.3740 - val_accuracy: 0.6100
+Epoch 19/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.7113 - accuracy: 0.8288 - val_loss: 1.4058 - val_accuracy: 0.5950
+Epoch 20/20
+100/100 [==============================] - 7s 68ms/step - loss: 0.6965 - accuracy: 0.8263 - val_loss: 1.4676 - val_accuracy: 0.5975
+Baseline test loss: 1.0154743194580078
+Pruned test loss: 1.4676454067230225
+Baseline test accuracy: 0.6800000071525574
+Pruned test accuracy: 0.5975000262260437
+WARNING:tensorflow:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:tensorflow:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv1 (Conv2D)              (None, 126, 1249, 30)     300
+
+ batch_normalization (BatchN  (None, 126, 1249, 30)    120
+ ormalization)
+
+ pool1 (MaxPooling2D)        (None, 42, 624, 30)       0
+
+ dropout1 (Dropout)          (None, 42, 624, 30)       0
+
+ conv2 (Conv2D)              (None, 40, 622, 60)       16260
+
+ batch_normalization_1 (Batc  (None, 40, 622, 60)      240
+ hNormalization)
+
+ pool2 (MaxPooling2D)        (None, 20, 311, 60)       0
+
+ dropout2 (Dropout)          (None, 20, 311, 60)       0
+
+ conv3 (Conv2D)              (None, 18, 309, 60)       32460
+
+ batch_normalization_2 (Batc  (None, 18, 309, 60)      240
+ hNormalization)
+
+ pool3 (MaxPooling2D)        (None, 6, 154, 60)        0
+
+ dropout3 (Dropout)          (None, 6, 154, 60)        0
+
+ conv4 (Conv2D)              (None, 4, 152, 60)        32460
+
+ batch_normalization_3 (Batc  (None, 4, 152, 60)       240
+ hNormalization)
+
+ pool4 (MaxPooling2D)        (None, 1, 50, 60)         0
+
+ dropout4 (Dropout)          (None, 1, 50, 60)         0
+
+ permute (Permute)           (None, 60, 1, 50)         0
+
+ reshape (Reshape)           (None, 50, 60)            0
+
+ LSTM1 (LSTM)                (None, 50, 60)            29040
+
+ LSTM2 (LSTM)                (None, 60)                29040
+
+ dropout5 (Dropout)          (None, 60)                0
+
+ Linear (Dense)              (None, 50)                3050
+
+ activation (Activation)     (None, 50)                0
+
+=================================================================
+Total params: 143,450
+Trainable params: 143,030
+Non-trainable params: 420
+_________________________________________________________________
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_fn, lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2023-08-26 13:48:45.074358: W tensorflow/compiler/mlir/lite/python/tf_tfl_flatbuffer_helpers.cc:363] Ignored output_format.
+2023-08-26 13:48:45.074446: W tensorflow/compiler/mlir/lite/python/tf_tfl_flatbuffer_helpers.cc:366] Ignored drop_control_dependency.
+2023-08-26 13:48:45.074617: I tensorflow/cc/saved_model/reader.cc:43] Reading SavedModel from: C:\Users\34405\AppData\Local\Temp\tmpve22ee5o
+2023-08-26 13:48:45.086773: I tensorflow/cc/saved_model/reader.cc:107] Reading meta graph with tags { serve }
+2023-08-26 13:48:45.086846: I tensorflow/cc/saved_model/reader.cc:148] Reading SavedModel debug info (if present) from: C:\Users\34405\AppData\Local\Temp\tmpve22ee5o
+2023-08-26 13:48:45.154869: I tensorflow/cc/saved_model/loader.cc:210] Restoring SavedModel bundle.
+2023-08-26 13:48:45.243754: I tensorflow/cc/saved_model/loader.cc:194] Running initialization op on SavedModel bundle at path: C:\Users\34405\AppData\Local\Temp\tmpve22ee5o
+2023-08-26 13:48:45.314146: I tensorflow/cc/saved_model/loader.cc:283] SavedModel load for tags { serve }; Status: success: OK. Took 239522 microseconds.
+2023-08-26 13:48:45.616227: W tensorflow/compiler/mlir/lite/flatbuffer_export.cc:1891] TFLite interpreter needs to link Flex delegate in order to run the model since it contains the following Select TFop(s):
+Flex ops: FlexTensorListFromTensor, FlexTensorListGetItem, FlexTensorListReserve, FlexTensorListSetItem, FlexTensorListStack
+Details:
+	tf.TensorListFromTensor(tensor<50x?x60xf32>, tensor<2xi32>) -> (tensor<!tf_type.variant<tensor<?x60xf32>>>) : {device = ""}
+	tf.TensorListFromTensor(tensor<?x?x60xf32>, tensor<2xi32>) -> (tensor<!tf_type.variant<tensor<?x60xf32>>>) : {device = ""}
+	tf.TensorListGetItem(tensor<!tf_type.variant<tensor<?x60xf32>>>, tensor<i32>, tensor<2xi32>) -> (tensor<?x60xf32>) : {device = ""}
+	tf.TensorListReserve(tensor<2xi32>, tensor<i32>) -> (tensor<!tf_type.variant<tensor<?x60xf32>>>) : {device = ""}
+	tf.TensorListSetItem(tensor<!tf_type.variant<tensor<?x60xf32>>>, tensor<i32>, tensor<?x60xf32>) -> (tensor<!tf_type.variant<tensor<?x60xf32>>>) : {device = ""}
+	tf.TensorListStack(tensor<!tf_type.variant<tensor<?x60xf32>>>, tensor<2xi32>) -> (tensor<?x?x60xf32>) : {device = "", num_elements = -1 : i64}
+See instructions: https://www.tensorflow.org/lite/guide/ops_select
+Size of gzipped baseline Keras model: 2129538.00 bytes
+Size of gzipped baseline TFlite model: 540489.00 bytes
+Size of gzipped pruned Keras model: 386746.00 bytes
+Size of gzipped pruned TFlite model: 368077.00 bytes
+
+进程已结束,退出代码0
