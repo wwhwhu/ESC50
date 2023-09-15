@@ -1,0 +1,320 @@
+E:\LenovoSoftstore\Install\anaconda3\envs\YAMNET\python.exe D:/PycharmProgram/chuanyin/ESC-50/train_CNN.py
+train_num 1600
+test_num 400
+训练集x大小 (8000, 128, 1251)
+训练集y大小 (8000,)
+测试集x大小 (400, 128, 1251)
+测试集y大小 (400,)
+
+
+训练集x大小 (8000, 128, 1251, 1)
+训练集y大小 (8000, 50)
+测试集x大小 (400, 128, 1251, 1)
+测试集y大小 (400, 50)
+model输入shape: (128, 1251, 1) model输出shape: 50
+2023-08-25 10:57:40.335465: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-08-25 10:57:41.001965: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1525] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5455 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4060 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv1 (Conv2D)              (None, 126, 1249, 20)     200
+
+ batch_normalization (BatchN  (None, 126, 1249, 20)    80
+ ormalization)
+
+ pool1 (MaxPooling2D)        (None, 63, 312, 20)       0
+
+ dropout1 (Dropout)          (None, 63, 312, 20)       0
+
+ conv2 (Conv2D)              (None, 61, 310, 41)       7421
+
+ batch_normalization_1 (Batc  (None, 61, 310, 41)      164
+ hNormalization)
+
+ pool2 (MaxPooling2D)        (None, 30, 77, 41)        0
+
+ dropout2 (Dropout)          (None, 30, 77, 41)        0
+
+ conv3 (Conv2D)              (None, 28, 75, 41)        15170
+
+ batch_normalization_2 (Batc  (None, 28, 75, 41)       164
+ hNormalization)
+
+ pool3 (MaxPooling2D)        (None, 14, 18, 41)        0
+
+ dropout3 (Dropout)          (None, 14, 18, 41)        0
+
+ conv4 (Conv2D)              (None, 12, 16, 62)        22940
+
+ batch_normalization_3 (Batc  (None, 12, 16, 62)       248
+ hNormalization)
+
+ pool4 (MaxPooling2D)        (None, 3, 4, 62)          0
+
+ dropout4 (Dropout)          (None, 3, 4, 62)          0
+
+ flatten (Flatten)           (None, 744)               0
+
+ Linear1 (Dense)             (None, 256)               190720
+
+ Linear2 (Dense)             (None, 50)                12850
+
+ activation (Activation)     (None, 50)                0
+
+=================================================================
+Total params: 249,957
+Trainable params: 249,629
+Non-trainable params: 328
+_________________________________________________________________
+Epoch 1/1000
+2023-08-25 10:57:43.375057: I tensorflow/stream_executor/cuda/cuda_dnn.cc:368] Loaded cuDNN version 8900
+2023-08-25 10:57:44.982882: I tensorflow/stream_executor/cuda/cuda_blas.cc:1786] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+499/500 [============================>.] - ETA: 0s - loss: 3.7247 - accuracy: 0.2022
+Epoch 1: saving model to CNN_models\esc50_.01_2.7630_0.2425.hdf5
+
+Epoch 1: val_loss improved from inf to 2.76299, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 22s 37ms/step - loss: 3.7234 - accuracy: 0.2023 - val_loss: 2.7630 - val_accuracy: 0.2425 - lr: 0.0010
+Epoch 2/1000
+499/500 [============================>.] - ETA: 0s - loss: 2.4157 - accuracy: 0.4151
+Epoch 2: saving model to CNN_models\esc50_.02_1.6943_0.5275.hdf5
+
+Epoch 2: val_loss improved from 2.76299 to 1.69432, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 35ms/step - loss: 2.4161 - accuracy: 0.4153 - val_loss: 1.6943 - val_accuracy: 0.5275 - lr: 0.0010
+Epoch 3/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.9279 - accuracy: 0.5526
+Epoch 3: saving model to CNN_models\esc50_.03_1.3639_0.5875.hdf5
+
+Epoch 3: val_loss improved from 1.69432 to 1.36394, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 1.9278 - accuracy: 0.5526 - val_loss: 1.3639 - val_accuracy: 0.5875 - lr: 0.0010
+Epoch 4/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.6723 - accuracy: 0.6251
+Epoch 4: saving model to CNN_models\esc50_.04_1.1429_0.6575.hdf5
+
+Epoch 4: val_loss improved from 1.36394 to 1.14292, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 1.6727 - accuracy: 0.6250 - val_loss: 1.1429 - val_accuracy: 0.6575 - lr: 0.0010
+Epoch 5/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.5189 - accuracy: 0.6946
+Epoch 5: saving model to CNN_models\esc50_.05_0.9562_0.7075.hdf5
+
+Epoch 5: val_loss improved from 1.14292 to 0.95621, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 1.5181 - accuracy: 0.6951 - val_loss: 0.9562 - val_accuracy: 0.7075 - lr: 0.0010
+Epoch 6/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.4323 - accuracy: 0.7272
+Epoch 6: saving model to CNN_models\esc50_.06_1.0149_0.7150.hdf5
+
+Epoch 6: val_loss did not improve from 0.95621
+500/500 [==============================] - 18s 36ms/step - loss: 1.4321 - accuracy: 0.7272 - val_loss: 1.0149 - val_accuracy: 0.7150 - lr: 0.0010
+Epoch 7/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.3211 - accuracy: 0.7570
+Epoch 7: saving model to CNN_models\esc50_.07_0.8790_0.7400.hdf5
+
+Epoch 7: val_loss improved from 0.95621 to 0.87904, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 35ms/step - loss: 1.3211 - accuracy: 0.7570 - val_loss: 0.8790 - val_accuracy: 0.7400 - lr: 0.0010
+Epoch 8/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.2563 - accuracy: 0.7707
+Epoch 8: saving model to CNN_models\esc50_.08_0.7809_0.7875.hdf5
+
+Epoch 8: val_loss improved from 0.87904 to 0.78095, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 1.2566 - accuracy: 0.7706 - val_loss: 0.7809 - val_accuracy: 0.7875 - lr: 0.0010
+Epoch 9/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.2018 - accuracy: 0.7978
+Epoch 9: saving model to CNN_models\esc50_.09_0.7725_0.7900.hdf5
+
+Epoch 9: val_loss improved from 0.78095 to 0.77247, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 1.2010 - accuracy: 0.7981 - val_loss: 0.7725 - val_accuracy: 0.7900 - lr: 0.0010
+Epoch 10/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.1541 - accuracy: 0.8079
+Epoch 10: saving model to CNN_models\esc50_.10_0.8041_0.7575.hdf5
+
+Epoch 10: val_loss did not improve from 0.77247
+500/500 [==============================] - 18s 36ms/step - loss: 1.1541 - accuracy: 0.8080 - val_loss: 0.8041 - val_accuracy: 0.7575 - lr: 0.0010
+Epoch 11/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.1182 - accuracy: 0.8270
+Epoch 11: saving model to CNN_models\esc50_.11_0.7010_0.7775.hdf5
+
+Epoch 11: val_loss improved from 0.77247 to 0.70104, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 1.1177 - accuracy: 0.8273 - val_loss: 0.7010 - val_accuracy: 0.7775 - lr: 0.0010
+Epoch 12/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.1110 - accuracy: 0.8315
+Epoch 12: saving model to CNN_models\esc50_.12_0.7720_0.7725.hdf5
+
+Epoch 12: val_loss did not improve from 0.70104
+500/500 [==============================] - 18s 35ms/step - loss: 1.1102 - accuracy: 0.8316 - val_loss: 0.7720 - val_accuracy: 0.7725 - lr: 0.0010
+Epoch 13/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.0718 - accuracy: 0.8451
+Epoch 13: saving model to CNN_models\esc50_.13_0.7288_0.7975.hdf5
+
+Epoch 13: val_loss did not improve from 0.70104
+500/500 [==============================] - 18s 35ms/step - loss: 1.0718 - accuracy: 0.8451 - val_loss: 0.7288 - val_accuracy: 0.7975 - lr: 0.0010
+Epoch 14/1000
+499/500 [============================>.] - ETA: 0s - loss: 1.0175 - accuracy: 0.8610
+Epoch 14: saving model to CNN_models\esc50_.14_0.7228_0.7900.hdf5
+
+Epoch 14: val_loss did not improve from 0.70104
+
+Epoch 14: ReduceLROnPlateau reducing learning rate to 0.0006000000284984708.
+500/500 [==============================] - 18s 35ms/step - loss: 1.0172 - accuracy: 0.8611 - val_loss: 0.7228 - val_accuracy: 0.7900 - lr: 0.0010
+Epoch 15/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.9768 - accuracy: 0.8753
+Epoch 15: saving model to CNN_models\esc50_.15_0.6017_0.8425.hdf5
+
+Epoch 15: val_loss improved from 0.70104 to 0.60168, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 0.9769 - accuracy: 0.8750 - val_loss: 0.6017 - val_accuracy: 0.8425 - lr: 6.0000e-04
+Epoch 16/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.9614 - accuracy: 0.8765
+Epoch 16: saving model to CNN_models\esc50_.16_0.6201_0.8225.hdf5
+
+Epoch 16: val_loss did not improve from 0.60168
+500/500 [==============================] - 18s 36ms/step - loss: 0.9608 - accuracy: 0.8765 - val_loss: 0.6201 - val_accuracy: 0.8225 - lr: 6.0000e-04
+Epoch 17/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.9495 - accuracy: 0.8858
+Epoch 17: saving model to CNN_models\esc50_.17_0.6198_0.8375.hdf5
+
+Epoch 17: val_loss did not improve from 0.60168
+500/500 [==============================] - 18s 36ms/step - loss: 0.9499 - accuracy: 0.8856 - val_loss: 0.6198 - val_accuracy: 0.8375 - lr: 6.0000e-04
+Epoch 18/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.9221 - accuracy: 0.8929
+Epoch 18: saving model to CNN_models\esc50_.18_0.6285_0.8050.hdf5
+
+Epoch 18: val_loss did not improve from 0.60168
+
+Epoch 18: ReduceLROnPlateau reducing learning rate to 0.0003600000170990825.
+500/500 [==============================] - 18s 36ms/step - loss: 0.9219 - accuracy: 0.8929 - val_loss: 0.6285 - val_accuracy: 0.8050 - lr: 6.0000e-04
+Epoch 19/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.9054 - accuracy: 0.9008
+Epoch 19: saving model to CNN_models\esc50_.19_0.5972_0.8325.hdf5
+
+Epoch 19: val_loss improved from 0.60168 to 0.59715, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 0.9061 - accuracy: 0.9005 - val_loss: 0.5972 - val_accuracy: 0.8325 - lr: 3.6000e-04
+Epoch 20/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8978 - accuracy: 0.9008
+Epoch 20: saving model to CNN_models\esc50_.20_0.5785_0.8325.hdf5
+
+Epoch 20: val_loss improved from 0.59715 to 0.57850, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 35ms/step - loss: 0.8995 - accuracy: 0.9007 - val_loss: 0.5785 - val_accuracy: 0.8325 - lr: 3.6000e-04
+Epoch 21/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8892 - accuracy: 0.9039
+Epoch 21: saving model to CNN_models\esc50_.21_0.5927_0.8200.hdf5
+
+Epoch 21: val_loss did not improve from 0.57850
+500/500 [==============================] - 18s 35ms/step - loss: 0.8894 - accuracy: 0.9040 - val_loss: 0.5927 - val_accuracy: 0.8200 - lr: 3.6000e-04
+Epoch 22/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8881 - accuracy: 0.8995
+Epoch 22: saving model to CNN_models\esc50_.22_0.5599_0.8325.hdf5
+
+Epoch 22: val_loss improved from 0.57850 to 0.55989, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 0.8876 - accuracy: 0.8994 - val_loss: 0.5599 - val_accuracy: 0.8325 - lr: 3.6000e-04
+Epoch 23/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8825 - accuracy: 0.9027
+Epoch 23: saving model to CNN_models\esc50_.23_0.5733_0.8475.hdf5
+
+Epoch 23: val_loss did not improve from 0.55989
+500/500 [==============================] - 18s 36ms/step - loss: 0.8820 - accuracy: 0.9029 - val_loss: 0.5733 - val_accuracy: 0.8475 - lr: 3.6000e-04
+Epoch 24/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8699 - accuracy: 0.9082
+Epoch 24: saving model to CNN_models\esc50_.24_0.5608_0.8300.hdf5
+
+Epoch 24: val_loss did not improve from 0.55989
+500/500 [==============================] - 18s 36ms/step - loss: 0.8708 - accuracy: 0.9076 - val_loss: 0.5608 - val_accuracy: 0.8300 - lr: 3.6000e-04
+Epoch 25/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8774 - accuracy: 0.9109
+Epoch 25: saving model to CNN_models\esc50_.25_0.5622_0.8275.hdf5
+
+Epoch 25: val_loss did not improve from 0.55989
+
+Epoch 25: ReduceLROnPlateau reducing learning rate to 0.00021600000327453016.
+500/500 [==============================] - 18s 36ms/step - loss: 0.8770 - accuracy: 0.9107 - val_loss: 0.5622 - val_accuracy: 0.8275 - lr: 3.6000e-04
+Epoch 26/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8549 - accuracy: 0.9170
+Epoch 26: saving model to CNN_models\esc50_.26_0.5579_0.8375.hdf5
+
+Epoch 26: val_loss improved from 0.55989 to 0.55789, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 0.8541 - accuracy: 0.9171 - val_loss: 0.5579 - val_accuracy: 0.8375 - lr: 2.1600e-04
+Epoch 27/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8524 - accuracy: 0.9172
+Epoch 27: saving model to CNN_models\esc50_.27_0.5624_0.8325.hdf5
+
+Epoch 27: val_loss did not improve from 0.55789
+500/500 [==============================] - 18s 35ms/step - loss: 0.8521 - accuracy: 0.9172 - val_loss: 0.5624 - val_accuracy: 0.8325 - lr: 2.1600e-04
+Epoch 28/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8414 - accuracy: 0.9188
+Epoch 28: saving model to CNN_models\esc50_.28_0.5281_0.8525.hdf5
+
+Epoch 28: val_loss improved from 0.55789 to 0.52806, saving model to CNN_models\best.hdf5
+500/500 [==============================] - 18s 36ms/step - loss: 0.8413 - accuracy: 0.9189 - val_loss: 0.5281 - val_accuracy: 0.8525 - lr: 2.1600e-04
+Epoch 29/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8576 - accuracy: 0.9188
+Epoch 29: saving model to CNN_models\esc50_.29_0.5459_0.8500.hdf5
+
+Epoch 29: val_loss did not improve from 0.52806
+500/500 [==============================] - 18s 35ms/step - loss: 0.8578 - accuracy: 0.9187 - val_loss: 0.5459 - val_accuracy: 0.8500 - lr: 2.1600e-04
+Epoch 30/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8411 - accuracy: 0.9151
+Epoch 30: saving model to CNN_models\esc50_.30_0.5470_0.8450.hdf5
+
+Epoch 30: val_loss did not improve from 0.52806
+500/500 [==============================] - 18s 35ms/step - loss: 0.8410 - accuracy: 0.9150 - val_loss: 0.5470 - val_accuracy: 0.8450 - lr: 2.1600e-04
+Epoch 31/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8561 - accuracy: 0.9215
+Epoch 31: saving model to CNN_models\esc50_.31_0.5717_0.8325.hdf5
+
+Epoch 31: val_loss did not improve from 0.52806
+
+Epoch 31: ReduceLROnPlateau reducing learning rate to 0.00012960000021848827.
+500/500 [==============================] - 18s 35ms/step - loss: 0.8561 - accuracy: 0.9215 - val_loss: 0.5717 - val_accuracy: 0.8325 - lr: 2.1600e-04
+Epoch 32/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8301 - accuracy: 0.9248
+Epoch 32: saving model to CNN_models\esc50_.32_0.5289_0.8450.hdf5
+
+Epoch 32: val_loss did not improve from 0.52806
+500/500 [==============================] - 18s 35ms/step - loss: 0.8306 - accuracy: 0.9250 - val_loss: 0.5289 - val_accuracy: 0.8450 - lr: 1.2960e-04
+Epoch 33/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8389 - accuracy: 0.9205
+Epoch 33: saving model to CNN_models\esc50_.33_0.5387_0.8350.hdf5
+
+Epoch 33: val_loss did not improve from 0.52806
+500/500 [==============================] - 18s 35ms/step - loss: 0.8397 - accuracy: 0.9206 - val_loss: 0.5387 - val_accuracy: 0.8350 - lr: 1.2960e-04
+Epoch 34/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8335 - accuracy: 0.9216
+Epoch 34: saving model to CNN_models\esc50_.34_0.5438_0.8475.hdf5
+
+Epoch 34: val_loss did not improve from 0.52806
+
+Epoch 34: ReduceLROnPlateau reducing learning rate to 7.775999838486313e-05.
+500/500 [==============================] - 18s 35ms/step - loss: 0.8332 - accuracy: 0.9218 - val_loss: 0.5438 - val_accuracy: 0.8475 - lr: 1.2960e-04
+Epoch 35/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8185 - accuracy: 0.9265
+Epoch 35: saving model to CNN_models\esc50_.35_0.5350_0.8450.hdf5
+
+Epoch 35: val_loss did not improve from 0.52806
+500/500 [==============================] - 18s 36ms/step - loss: 0.8192 - accuracy: 0.9262 - val_loss: 0.5350 - val_accuracy: 0.8450 - lr: 7.7760e-05
+Epoch 36/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8207 - accuracy: 0.9264
+Epoch 36: saving model to CNN_models\esc50_.36_0.5500_0.8350.hdf5
+
+Epoch 36: val_loss did not improve from 0.52806
+500/500 [==============================] - 18s 36ms/step - loss: 0.8204 - accuracy: 0.9264 - val_loss: 0.5500 - val_accuracy: 0.8350 - lr: 7.7760e-05
+Epoch 37/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8396 - accuracy: 0.9206
+Epoch 37: saving model to CNN_models\esc50_.37_0.5394_0.8450.hdf5
+
+Epoch 37: val_loss did not improve from 0.52806
+
+Epoch 37: ReduceLROnPlateau reducing learning rate to 4.6655999904032795e-05.
+500/500 [==============================] - 18s 35ms/step - loss: 0.8402 - accuracy: 0.9204 - val_loss: 0.5394 - val_accuracy: 0.8450 - lr: 7.7760e-05
+Epoch 38/1000
+499/500 [============================>.] - ETA: 0s - loss: 0.8401 - accuracy: 0.9190Restoring model weights from the end of the best epoch: 28.
+
+Epoch 38: saving model to CNN_models\esc50_.38_0.5391_0.8375.hdf5
+
+Epoch 38: val_loss did not improve from 0.52806
+500/500 [==============================] - 18s 35ms/step - loss: 0.8398 - accuracy: 0.9191 - val_loss: 0.5391 - val_accuracy: 0.8375 - lr: 4.6656e-05
+Epoch 38: early stopping
+13/13 [==============================] - 0s 23ms/step - loss: 0.5281 - accuracy: 0.8525
+Test score: 0.5280590653419495
+Test accuracy: 0.8525000214576721
+dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy', 'lr'])
+
+进程已结束,退出代码0

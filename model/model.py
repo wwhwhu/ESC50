@@ -129,27 +129,3 @@ def CNN_k2c2_model(shape, class_num=50):
                   optimizer=opt,
                   metrics=['accuracy'])
     return model
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
